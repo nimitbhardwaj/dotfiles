@@ -1,0 +1,13 @@
+[helpers]
+
+[default]
+depends = []
+
+[default.files]
+nvim = "~/.config/nvim"
+opencode = "~/.config/opencode"
+
+[default.variables]
+
+[settings]
+default_target_type = "automatic"
