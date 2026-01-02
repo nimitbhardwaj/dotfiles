@@ -19,3 +19,8 @@ packages:
     files:
       - source: "opencode"
         target: "~/.config/opencode"
+  hypr:
+    description: "Hyprland configs"
+    files:
+      - source: "hypr"
+        target: "~/.config/hypr/"
