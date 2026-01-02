@@ -1,0 +1,21 @@
+settings:
+  backup: true
+
+packages:
+  nvim-base:
+    description: "Neovim configuration with LazyVim for base"
+    files:
+      - source: "nvim/base/"
+        target: "~/.config/nvim"
+  nvim-home:
+    description: "Neovim configuration home use"
+    depends: ["nvim-base"]
+    files:
+      - source: "nvim/home"
+        target: "~/.config/nvim"
+
+  opencode:
+    description: "OpenCode AI assistant configuration"
+    files:
+      - source: "opencode"
+        target: "~/.config/opencode"
