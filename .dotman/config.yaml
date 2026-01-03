@@ -1,5 +1,7 @@
 settings:
   backup: true
+variables:
+  username: nimit
 
 packages:
   nvim-base:
@@ -19,6 +21,11 @@ packages:
     files:
       - source: "opencode"
         target: "~/.config/opencode"
+        absorb_ignore:
+          - ".*node_modules.*"
+          - "antigravity-accounts.json"
+          - "package.json"
+          - "bun.lock"
   hypr:
     description: "Hyprland configs"
     files:
