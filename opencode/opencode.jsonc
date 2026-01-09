@@ -13,6 +13,13 @@
       "command": ["npx", "-y", "@executeautomation/playwright-mcp-server"],
       "enabled": false,
     },
+    "minimax": {
+      "type": "local",
+      "command": ["uvx", "minimax-coding-plan-mcp"],
+      "environment": {
+        "MINIMAX_API_HOST": "https://api.minimax.io",
+      },
+    },
   },
   "provider": {
     "google": {

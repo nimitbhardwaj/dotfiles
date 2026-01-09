@@ -3,25 +3,25 @@
   "disabled_hooks": ["session-notification"],
   "agents": {
     "Sisyphus": {
-      "model": "opencode/grok-code"
+      "model": "minimax/MiniMax-M2.1"
     },
     "librarian": {
-      "model": "opencode/grok-code"
+      "model": "minimax/Minimax-M2.1"
     },
     "explore": {
-      "model": "opencode/grok-code"
+      "model": "minimax/Minimax-M2.1"
     },
     "oracle": {
-      "model": "opencode/grok-code"
+      "model": "minimax/Minimax-M2.1"
     },
     "frontend-ui-ux-engineer": {
-      "model": "opencode/grok-code"
+      "model": "minimax/Minimax-M2.1"
     },
     "document-writer": {
-      "model": "opencode/grok-code"
+      "model": "minimax/Minimax-M2.1"
     },
     "multimodal-looker": {
-      "model": "opencode/grok-code"
+      "model": "minimax/Minimax-M2.1"
     }
   }
 }
