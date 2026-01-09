@@ -31,3 +31,9 @@ packages:
     files:
       - source: "hypr"
         target: "~/.config/hypr/"
+
+  voxtype:
+    description: "Voice to text"
+    files:
+      - source: "voxtype"
+        target: "~/.config/voxtype/"
