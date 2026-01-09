@@ -1,6 +1,13 @@
 # ==========================================================
 # Zsh Base Configuration (Starship + eza)
 # ==========================================================
+#
+# ---------- OS specific ----------
+
+# Homebrew (macOS)
+if [[ "$OSTYPE" == darwin* ]] && [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # ---------- Zsh Options ----------
 setopt autocd

@@ -2,22 +2,21 @@
 # Main Zsh Config
 # ==========================================================
 
-# Load base configuration
+# ---------- Base ----------
 . "$HOME/.config/zsh/base.zsh"
-
-# Load plugins
 . "$HOME/.config/zsh/plugins.zsh"
+. "$HOME/.config/zsh/doctor.zsh"
 
 # ---------- Language / Tooling ----------
 
 # Rust
-source "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
 # opencode
-export PATH="$HOME/.opencode/bin:$PATH"
+[[ -d "$HOME/.opencode/bin" ]] && export PATH="$HOME/.opencode/bin:$PATH"
 
 # Pipx
-export PATH="$PATH:$HOME/.local/bin"
+[[ -d "$HOME/.local/bin" ]] && export PATH="$PATH:$HOME/.local/bin"
 
 # Dotfiles location
 export DOTMAN_CONFIG_DIR="$HOME/.dotfiles"
@@ -26,7 +25,7 @@ export DOTMAN_CONFIG_DIR="$HOME/.dotfiles"
 fpath+=~/.zfunc
 
 # ---------- Starship Prompt ----------
-# Starship controls ALL visuals (only load once)
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
+
