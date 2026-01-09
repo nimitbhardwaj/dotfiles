@@ -15,20 +15,25 @@ WORDCHARS=${WORDCHARS//\/}
 PROMPT_EOL_MARK=""
 
 # ---------- Key Bindings (Core Zsh Only) ----------
-bindkey -e
-bindkey ' ' magic-space
-bindkey '^U' backward-kill-line
-bindkey '^[[3;5~' kill-word
-bindkey '^[[3~' delete-char
-bindkey '^[[1;5C' forward-word
-bindkey '^[[1;5D' backward-word
-bindkey '^[[5~' beginning-of-buffer-or-history
-bindkey '^[[6~' end-of-buffer-or-history
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
-bindkey '^[[Z' undo
+
+# Insert mode keybindings (Vi)
+bindkey -M viins ' ' magic-space
+bindkey -M viins '^U' backward-kill-line
+bindkey -M viins '^[[3;5~' kill-word
+bindkey -M viins '^[[3~' delete-char
+bindkey -M viins '^[[1;5C' forward-word
+bindkey -M viins '^[[1;5D' backward-word
+bindkey -M viins '^[[5~' beginning-of-buffer-or-history
+bindkey -M viins '^[[6~' end-of-buffer-or-history
+bindkey -M viins '^[[H' beginning-of-line
+bindkey -M viins '^[[F' end-of-line
+bindkey -M viins '^[[Z' undo
+
+bindkey -M vicmd '^[[H' beginning-of-line
+bindkey -M vicmd '^[[F' end-of-line
 
 # ---------- Completion ----------
+fpath+=~/.zfunc
 autoload -Uz compinit
 compinit -d ~/.cache/zcompdump
 
@@ -69,7 +74,4 @@ fi
 # ---------- General Aliases ----------
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
-
-# -------auto-description
-fpath+=~/.zfunc; autoload -Uz compinit; compinit
 

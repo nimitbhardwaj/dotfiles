@@ -24,15 +24,22 @@ zinit light hlissner/zsh-autopair
 # zsh-history-substring-search
 zinit light zsh-users/zsh-history-substring-search
 
+# vim mode in terminal
+zinit light jeffreytse/zsh-vi-mode
 
 # ==========================================================
 # Plugin Configuration (BELONGS HERE)
 # ==========================================================
 
-# Accept autosuggestion with Right Arrow →
-bindkey '^[[C' autosuggest-accept
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# History substring search with arrow keys (Vi mode compatible)
+bindkey -M viins '^[[A' history-substring-search-up
+bindkey -M viins '^[[B' history-substring-search-down
+bindkey -M viins '^[[C' autosuggest-accept
+
+
+bindkey -M vicmd '^[[A' history-substring-search-up
+bindkey -M vicmd '^[[B' history-substring-search-down
+
 
 # Ghost text color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'

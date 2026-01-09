@@ -75,8 +75,9 @@ Ubuntu = " "
 Windows = " "
 
 [character]
-success_symbol = "[>](fg:blue)"
-error_symbol = "[>](fg:red)"
+success_symbol = "[✎](fg:blue)"
+error_symbol   = "[✎](fg:red)"
+vimcmd_symbol  = "[](fg:green bold)"
 
 [directory]
 format = "[$path](bold $style)[$read_only]($read_only_style) "
