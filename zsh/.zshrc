@@ -8,6 +8,9 @@
 # Load plugins
 . "$HOME/.config/zsh/plugins.zsh"
 
+# Load bun
+. "$HOME/.config/zsh/bun.zsh"
+
 # ---------- Language / Tooling ----------
 
 # Rust
