@@ -37,3 +37,13 @@ packages:
     files:
       - source: "voxtype"
         target: "~/.config/voxtype/"
+
+  zsh:
+    description: "Zsh Config for the system"
+    files:
+      - source: "zsh/.zshrc"
+        target: "~/.zshrc"
+      - source: "zsh/zsh"
+        target: "~/.config/zsh/"
+      - source: "zsh/starship.toml"
+        target: "~/.config/starship.toml"

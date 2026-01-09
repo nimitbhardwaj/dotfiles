@@ -1,0 +1,162 @@
+format = """\
+[╭╴](fg:arrow)\
+$username\
+$os\
+$git_branch\
+(\
+    at \
+    $directory\
+)\
+$cmd_duration\
+(\
+    via \
+    $python\
+    $conda\
+    $nodejs\
+    $c\
+    $rust\
+    $java\
+)
+[╰─](fg:arrow)$character\
+"""
+# Add the modules you need
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+
+palette = "tokyonight"
+
+[palettes.tokyonight]
+arrow = "#3b4261"
+os = "#7aa2f7"
+os_admin = "#f7768e"
+directory = "#9ece6a"
+time = "#7dcfff"
+node = "#73daca"
+git = "#bb9af7"
+git_status = "#414868"
+python = "#e0af68"
+conda = "#9ece6a"
+java = "#f7768e"
+rust = "#ff9e64"
+clang = "#7dcfff"
+duration = "#f7768e"
+text_color = "#c0caf5"
+text_light = "#1a1b26"
+
+[username]
+style_user = 'bold os'
+style_root = 'bold os_admin'
+format = '[  $user](fg:$style) '
+disabled = false
+show_always = true
+
+[os]
+format = "on [($name)]($style) "
+style = "bold blue"
+disabled = true
+
+[os.symbols]
+Alpine = " "
+Arch = " "
+Debian = " "
+EndeavourOS = " "
+Fedora = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mint = " "
+NixOS = " "
+openSUSE = " "
+Pop = " "
+SUSE = " "
+Ubuntu = " "
+Windows = " "
+
+[character]
+success_symbol = "[>](fg:blue)"
+error_symbol = "[>](fg:red)"
+
+[directory]
+format = "[$path](bold $style)[$read_only]($read_only_style) "
+truncation_length = 2
+style = "fg:directory"
+read_only_style = "fg:directory"
+before_repo_root_style = "fg:directory"
+truncation_symbol = "…/"
+truncate_to_repo = true
+read_only ="  "
+
+[time]
+disabled = true
+format = "at [󱑈 $time]($style)"
+time_format = "%H:%M"
+style = "bold fg:time"
+
+[cmd_duration]
+format = "took [ $duration]($style) "
+style = "bold fg:duration"
+min_time = 500
+
+[git_branch]
+format = "via [$symbol$branch]($style) "
+style = "bold fg:git"
+symbol = " "
+
+[git_status]
+format = '[ $all_status$ahead_behind ]($style)'
+style = "fg:text_color bg:git"
+disabled = true
+
+[docker_context]
+disabled=true
+symbol = " "
+
+[package]
+disabled=true
+
+[fill]
+symbol = " "
+
+[nodejs]
+format = "[ $symbol$version ]($style)"
+style = "bg:node fg:text_light"
+symbol = " "
+version_format = "${raw}"
+disabled=false
+
+[python]
+disabled=false
+format = '[ ${symbol}${pyenv_prefix}(${version})( \($virtualenv\)) ]($style)'
+symbol = " "
+version_format = "${raw}"
+style = "bg:python fg:text_light"
+
+[conda]
+format = "[ $symbol$environment ]($style)"
+style = "bg:conda fg:text_light"
+ignore_base = false
+disabled = false
+symbol = " "
+
+[java]
+format = "[ $symbol$version ]($style)"
+style = "bg:java fg:text_light"
+version_format = "${raw}"
+symbol = " "
+disabled = true
+
+[c]
+format = "[ $symbol($version(-$name)) ]($style)"
+style = "bg:clang fg:text_light"
+symbol = " "
+version_format = "${raw}"
+disabled=true
+
+[rust]
+format ="[ $symbol$version ]($style)"
+style = "bg:rust fg:text_light"
+symbol = " "
+version_format = "${raw}"
+disabled=true
