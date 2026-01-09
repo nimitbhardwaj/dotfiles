@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "disabled_hooks": ["session-notification"],
+  "agents": {
+    "Sisyphus": {
+      "model": "minimax/MiniMax-M2.1"
+    },
+    "librarian": {
+      "model": "minimax/Minimax-M2.1"
+    },
+    "explore": {
+      "model": "minimax/Minimax-M2.1"
+    },
+    "oracle": {
+      "model": "minimax/Minimax-M2.1"
+    },
+    "frontend-ui-ux-engineer": {
+      "model": "minimax/Minimax-M2.1"
+    },
+    "document-writer": {
+      "model": "minimax/Minimax-M2.1"
+    },
+    "multimodal-looker": {
+      "model": "minimax/Minimax-M2.1"
+    }
+  }
+}

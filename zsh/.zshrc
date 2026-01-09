@@ -7,6 +7,13 @@
 . "$HOME/.config/zsh/plugins.zsh"
 . "$HOME/.config/zsh/doctor.zsh"
 
+# Load bun
+. "$HOME/.config/zsh/bun.zsh"
+
+# Load Secrets
+[ -f "$HOME/.config/secrets.zsh" ] && source "$HOME/.config/secrets.zsh"
+
+
 # ---------- Language / Tooling ----------
 
 # Rust
