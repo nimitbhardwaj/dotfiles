@@ -10,7 +10,7 @@ return {
     local height_ratio = 0.9
 
     local opencode_term = Terminal:new({
-      cmd = "opencode",
+      cmd = "opencode --port",
       direction = "float",
       hidden = true,
       float_opts = {
