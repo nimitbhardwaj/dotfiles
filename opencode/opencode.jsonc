@@ -14,6 +14,7 @@
       "command": ["uvx", "minimax-coding-plan-mcp"],
       "environment": {
         "MINIMAX_API_HOST": "https://api.minimax.io",
+        "MINIMAX_API_KEY": "{env:MINIMAX_API_KEY}",
       },
       "enabled": true,
     },
@@ -29,6 +30,16 @@
       "type": "remote",
       "url": "https://mcp.grep.app",
       "enabled": true,
+    },
+    "draw_io": {
+      "type": "local",
+      "command": ["npx", "-y", "@next-ai-drawio/mcp-server@latest"],
+      "enabled": false,
+    },
+    "leetcode": {
+      "type": "local",
+      "command": ["npx", "-y", "@jinzcdev/leetcode-mcp-server"],
+      "enabled": false,
     },
   },
   "provider": {
