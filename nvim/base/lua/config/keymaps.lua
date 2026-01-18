@@ -3,8 +3,10 @@
 -- Add any additional keymaps here
 local posting = require("tools.posting")
 local terminal = require("tools.terminal")
+local ralph = require("tools.ralph")
 
 vim.keymap.set("n", "<leader>tp", posting.toggle, { desc = "Posting TUI" })
+vim.keymap.set("n", "<leader>tr", ralph.toggle, { desc = "Ralph TUI" })
 vim.keymap.set({ "n", "t" }, "<C-/>", terminal.toggle_current, {
   desc = "Toggle terminal (smart)",
 })

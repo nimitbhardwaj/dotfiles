@@ -36,3 +36,9 @@ if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
 
+
+# opencode
+export PATH=/Users/nimitbhardwaj/.opencode/bin:$PATH
+
+# bun completions
+[ -s "/Users/nimitbhardwaj/.bun/_bun" ] && source "/Users/nimitbhardwaj/.bun/_bun"

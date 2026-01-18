@@ -31,10 +31,8 @@ zinit light jeffreytse/zsh-vi-mode
 # Plugin Configuration (BELONGS HERE)
 # ==========================================================
 
-# History substring search with arrow keys (Vi mode compatible)
-bindkey -M viins '^[[A' history-substring-search-up
-bindkey -M viins '^[[B' history-substring-search-down
-bindkey -M viins '^[[C' autosuggest-accept
+# Accept autosuggestion if present, otherwise move cursor right
+bindkey -M viins '^[[C' forward-char
 
 
 bindkey -M vicmd '^[[A' history-substring-search-up

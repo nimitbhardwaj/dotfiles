@@ -1,5 +1,6 @@
 # ==========================================================
 # Zsh Doctor - Environment Health Check
+# Organized by: Foundation → Package Managers → Runtimes → Tools → Infrastructure
 # ==========================================================
 
 zsh_doctor() {
@@ -8,9 +9,15 @@ zsh_doctor() {
 
   print ""
   print "🩺 Zsh Doctor — checking your shell environment..."
-  print "-----------------------------------------------"
+  print "==============================================="
 
-  # ---------- OS ----------
+  # =========================================================
+  # SECTION 1: SYSTEM FOUNDATION
+  # =========================================================
+  print ""
+  print "📦 SYSTEM FOUNDATION"
+  print "───────────────────────────────────────────────"
+
   print "• OS: $OSTYPE"
   if [[ "$OSTYPE" == darwin* ]]; then
     print "  ✓ Detected macOS"
@@ -21,86 +28,158 @@ zsh_doctor() {
     ((warnings++))
   fi
 
-  # ---------- Homebrew (macOS) ----------
+  # =========================================================
+  # SECTION 2: PACKAGE MANAGERS
+  # =========================================================
+  print ""
+  print "📦 PACKAGE MANAGERS"
+  print "───────────────────────────────────────────────"
+
   if [[ "$OSTYPE" == darwin* ]]; then
     if [[ -x /opt/homebrew/bin/brew ]]; then
-      print "  ✓ Homebrew found"
+      print "✓ Homebrew"
     else
-      print "  ✗ Homebrew not found at /opt/homebrew/bin/brew"
-      print "    → Install from: https://brew.sh"
+      print "✗ Homebrew not found at /opt/homebrew/bin/brew"
+      print "  → Install from: https://brew.sh"
       ((errors++))
     fi
   fi
 
-  # ---------- Zinit ----------
+  # =========================================================
+  # SECTION 3: SHELL FRAMEWORK
+  # =========================================================
+  print ""
+  print "🐚 SHELL FRAMEWORK"
+  print "───────────────────────────────────────────────"
+
   if [[ -f ~/.zinit/bin/zinit.zsh ]]; then
-    print "  ✓ zinit installed"
+    print "✓ Zinit installed"
   else
-    print "  ✗ zinit not found"
-    print "    → It will be auto-installed on next shell start"
+    print "✗ Zinit not found"
+    print "  → Auto-installed on next shell start"
     ((warnings++))
   fi
 
-  # ---------- Starship ----------
-  if command -v starship >/dev/null 2>&1; then
-    print "  ✓ starship installed"
-  else
-    print "  ⚠ starship not installed"
-    print "    → Prompt will fall back to default"
-    ((warnings++))
-  fi
+  # =========================================================
+  # SECTION 4: PROGRAMMING LANGUAGES & RUNTIMES
+  # =========================================================
+  print ""
+  print "💻 LANGUAGES & RUNTIMES"
+  print "───────────────────────────────────────────────"
 
-  # ---------- eza ----------
-  if command -v eza >/dev/null 2>&1; then
-    print "  ✓ eza installed"
-  else
-    print "  ⚠ eza not installed (ls aliases inactive)"
-    print "    → Install: brew install eza  OR  sudo apt install eza"
-    ((warnings++))
-  fi
-
-  # ---------- Rust ----------
   if [[ -f "$HOME/.cargo/env" ]]; then
-    print "  ✓ Rust environment found"
+    print "✓ Rust environment"
   else
-    print "  ⚠ Rust not configured (~/.cargo/env missing)"
+    print "⚠ Rust not configured (~/.cargo/env missing)"
     ((warnings++))
   fi
 
-  # ---------- Pipx ----------
-  if [[ -d "$HOME/.local/bin" ]]; then
-    print "  ✓ pipx bin directory present"
+  if command -v bun >/dev/null 2>&1; then
+    print "✓ Bun"
   else
-    print "  ⚠ ~/.local/bin missing (pipx tools may not be in PATH)"
+    print "✗ Bun not found"
+    print "  → Install from: https://bun.sh"
+    ((errors++))
+  fi
+
+  # =========================================================
+  # SECTION 5: CLI UTILITIES & TOOLS
+  # =========================================================
+  print ""
+  print "🛠 CLI UTILITIES"
+  print "───────────────────────────────────────────────"
+
+  if command -v starship >/dev/null 2>&1; then
+    print "✓ Starship (prompt)"
+  else
+    print "⚠ Starship not installed"
+    print "  → Prompt will fall back to default"
     ((warnings++))
   fi
 
-  # ---------- opencode ----------
+  if command -v eza >/dev/null 2>&1; then
+    print "✓ Eza (ls replacement)"
+  else
+    print "⚠ Eza not installed (ls aliases inactive)"
+    print "  → Install: brew install eza  OR  sudo apt install eza"
+    ((warnings++))
+  fi
+
+  if command -v bd >/dev/null 2>&1; then
+    print "✓ bd (Beads task tracker)"
+  else
+    print "⚠ bd not found (Beads task tracker for LLMs)"
+    print "  → Beads helps AI agents track tasks, issues, and context"
+    print "  → Install: cargo install --git https://github.com/steveyegge/beads.git"
+    ((warnings++))
+  fi
+
+  # =========================================================
+  # SECTION 6: DEVELOPMENT TOOLS
+  # =========================================================
+  print ""
+  print "🔧 DEVELOPMENT TOOLS"
+  print "───────────────────────────────────────────────"
+
   if [[ -d "$HOME/.opencode/bin" ]]; then
-    print "  ✓ opencode found"
+    print "✓ Opencode"
   else
-    print "  ⚠ opencode not found"
+    print "⚠ Opencode not found"
     ((warnings++))
   fi
 
-  # ---------- Completion ----------
+  if command -v opencode-marketplace >/dev/null 2>&1; then
+    print "✓ Opencode Marketplace"
+  else
+    print "✗ Opencode Marketplace not found"
+    print "  → Install with: bun install -g opencode-marketplace"
+    ((errors++))
+  fi
+
+  if command -v ralph-tui >/dev/null 2>&1; then
+    print "✓ Ralph TUI"
+  else
+    print "⚠ Ralph TUI not found"
+    print "  → Install with: bun install -g ralph-tui"
+    ((warnings++))
+  fi
+
+  # =========================================================
+  # SECTION 7: ZSH INFRASTRUCTURE
+  # =========================================================
+  print ""
+  print "🏗 ZSH INFRASTRUCTURE"
+  print "───────────────────────────────────────────────"
+
   if [[ -d ~/.zfunc ]]; then
-    print "  ✓ ~/.zfunc directory exists"
+    print "✓ ~/.zfunc directory"
   else
-    print "  ⚠ ~/.zfunc directory missing"
-    print "    → Completions may not load"
+    print "⚠ ~/.zfunc directory missing"
+    print "  → Completions may not load"
     ((warnings++))
   fi
 
-  # ---------- zcompdump ----------
+  if [[ -d "$HOME/.local/bin" ]]; then
+    print "✓ ~/.local/bin (pipx)"
+  else
+    print "⚠ ~/.local/bin missing (pipx tools may not be in PATH)"
+    ((warnings++))
+  fi
+
   if [[ -f ~/.cache/zcompdump ]]; then
-    print "  ✓ Completion cache found"
+    print "✓ Completion cache (zcompdump)"
   else
-    print "  ⚠ No ~/.cache/zcompdump (will be created by compinit)"
+    print "⚠ No ~/.cache/zcompdump (will be created by compinit)"
     ((warnings++))
   fi
 
-  # ---------- Plugins ----------
+  # =========================================================
+  # SECTION 8: PLUGINS
+  # =========================================================
+  print ""
+  print "🔌 PLUGINS (Zinit)"
+  print "───────────────────────────────────────────────"
+
   local plugins=(
     "zsh-users/zsh-autosuggestions"
     "zdharma-continuum/fast-syntax-highlighting"
@@ -109,34 +188,39 @@ zsh_doctor() {
     "jeffreytse/zsh-vi-mode"
   )
 
-  print ""
-  print "• Checking plugins:"
   for p in "${plugins[@]}"; do
     local name="${p##*/}"
     local matches=(~/.zinit/plugins/*${name}*)
     if (( ${#matches[@]} )); then
-      print "  ✓ $name"
+      print "✓ $name"
     else
-      print "  ⚠ $name not found (will be installed by zinit)"
+      print "⚠ $name not found (will be installed by zinit)"
       ((warnings++))
     fi
   done
 
-  # ---------- Fonts (Starship / icons) ----------
+  # =========================================================
+  # SECTION 9: TERMINAL & FONTS
+  # =========================================================
   print ""
-  print "• Font / Icons:"
-  if [[ -n "$TERM_PROGRAM" ]]; then
-    print "  Terminal: $TERM_PROGRAM"
-  fi
-  print "  → If icons look broken, install a Nerd Font"
+  print "🎨 TERMINAL & FONTS"
+  print "───────────────────────────────────────────────"
 
-  # ---------- Summary ----------
+  if [[ -n "$TERM_PROGRAM" ]]; then
+    print "Terminal: $TERM_PROGRAM"
+  fi
+  print "→ If icons look broken, install a Nerd Font"
+
+  # =========================================================
+  # SECTION 10: SUMMARY
+  # =========================================================
   print ""
-  print "-----------------------------------------------"
+  print "==============================================="
   if (( errors == 0 && warnings == 0 )); then
     print "✅ All checks passed. Your Zsh setup looks healthy."
   else
-    print "🧾 Summary:"
+    print "🧾 SUMMARY"
+    print "───────────────────────────────────────────────"
     print "  Errors:   $errors"
     print "  Warnings: $warnings"
     print ""
@@ -150,4 +234,3 @@ zsh_doctor() {
 }
 
 alias zsh-doctor='zsh_doctor'
-

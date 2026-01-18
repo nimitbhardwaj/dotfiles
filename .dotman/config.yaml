@@ -9,6 +9,9 @@ packages:
     files:
       - source: "nvim/base/"
         target: "~/.config/nvim"
+    hooks:
+      pre_deploy:
+        - printf "package_name={{package_name}}\ndotfiles_dir={{dotfiles_dir}}\ntarget_dir={{target_dir}}\nusername={{username}}\n" > /tmp/dotman_vars.txt
   nvim-home:
     description: "Neovim configuration home use"
     depends: ["nvim-base"]
