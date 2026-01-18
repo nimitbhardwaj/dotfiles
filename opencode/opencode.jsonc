@@ -10,6 +10,11 @@
       "command": ["npx", "-y", "@executeautomation/playwright-mcp-server"],
       "enabled": false,
     },
+    "beads": {
+      "type": "local",
+      "command": ["uvx", "beads-mcp"],
+      "enabled": false,
+    },
     "minimax": {
       "type": "local",
       "command": ["uvx", "minimax-coding-plan-mcp"],

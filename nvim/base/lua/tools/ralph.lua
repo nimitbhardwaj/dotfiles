@@ -21,6 +21,7 @@ local function create_terminal(args)
     on_exit = function(self)
       terminal.unregister(self)
       ralph_terminal = nil
+      last_args = nil
     end,
   })
 end
