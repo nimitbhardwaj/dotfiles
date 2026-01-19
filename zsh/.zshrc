@@ -38,7 +38,4 @@ fi
 
 
 # opencode
-export PATH=/Users/nimitbhardwaj/.opencode/bin:$PATH
-
-# bun completions
-[ -s "/Users/nimitbhardwaj/.bun/_bun" ] && source "/Users/nimitbhardwaj/.bun/_bun"
+export PATH=$HOME/.opencode/bin:$PATH
