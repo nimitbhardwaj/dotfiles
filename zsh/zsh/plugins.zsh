@@ -38,6 +38,8 @@ bindkey -M viins '^[[C' forward-char
 bindkey -M vicmd '^[[A' history-substring-search-up
 bindkey -M vicmd '^[[B' history-substring-search-down
 
+bindkey -M viins '^[[A' history-substring-search-up
+bindkey -M viins '^[[B' history-substring-search-down
 
 # Ghost text color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
