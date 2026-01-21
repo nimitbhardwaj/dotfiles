@@ -11,3 +11,6 @@ vim.g.mapleader = "," -- Use comma as the leader key for custom mappings
 vim.wo.wrap = true -- Visually wrap long lines
 vim.wo.linebreak = true -- Wrap lines at word boundaries only
 vim.wo.breakindent = true -- Preserve indentation on wrapped lines
+
+-- Disable auto change directory
+vim.o.autochdir = false

@@ -4,6 +4,7 @@ return {
     config = true,
     cmd = "ToggleTerm",
     opts = {
+      autochdir = false,
       direction = "float",
       shade_filetypes = {},
       hide_numbers = true,
