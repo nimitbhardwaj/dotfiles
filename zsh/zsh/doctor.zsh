@@ -52,7 +52,7 @@ zsh_doctor() {
   print "🐚 SHELL FRAMEWORK"
   print "───────────────────────────────────────────────"
 
-  if [[ -f ~/.zinit/bin/zinit.zsh ]]; then
+  if command -v zinit >/dev/null 2>&1; then
     print "✓ Zinit installed"
   else
     print "✗ Zinit not found"
@@ -67,10 +67,10 @@ zsh_doctor() {
   print "💻 LANGUAGES & RUNTIMES"
   print "───────────────────────────────────────────────"
 
-  if [[ -f "$HOME/.cargo/env" ]]; then
-    print "✓ Rust environment"
+  if command -v rustc >/dev/null 2>&1; then
+    print "✓ Rust"
   else
-    print "⚠ Rust not configured (~/.cargo/env missing)"
+    print "⚠ Rust not found"
     ((warnings++))
   fi
 
@@ -110,7 +110,7 @@ zsh_doctor() {
   else
     print "⚠ bd not found (Beads task tracker for LLMs)"
     print "  → Beads helps AI agents track tasks, issues, and context"
-    print "  → Install: cargo install --git https://github.com/steveyegge/beads.git"
+    print "  → Install: curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/install.sh | bash"
     ((warnings++))
   fi
 
@@ -121,19 +121,11 @@ zsh_doctor() {
   print "🔧 DEVELOPMENT TOOLS"
   print "───────────────────────────────────────────────"
 
-  if [[ -d "$HOME/.opencode/bin" ]]; then
+  if command -v opencode >/dev/null 2>&1; then
     print "✓ Opencode"
   else
     print "⚠ Opencode not found"
     ((warnings++))
-  fi
-
-  if command -v opencode-marketplace >/dev/null 2>&1; then
-    print "✓ Opencode Marketplace"
-  else
-    print "✗ Opencode Marketplace not found"
-    print "  → Install with: bun install -g opencode-marketplace"
-    ((errors++))
   fi
 
   if command -v ralph-tui >/dev/null 2>&1; then
