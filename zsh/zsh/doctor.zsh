@@ -114,6 +114,14 @@ zsh_doctor() {
     ((warnings++))
   fi
 
+  if command -v lazysql >/dev/null 2>&1; then
+    print "✓ lazysql (SQL client)"
+  else
+    print "⚠ lazysql not found (TUI SQL client)"
+    print "  → Install: brew install lazysql"
+    ((warnings++))
+  fi
+
   # =========================================================
   # SECTION 6: DEVELOPMENT TOOLS
   # =========================================================

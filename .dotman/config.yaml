@@ -1,5 +1,5 @@
 settings:
-  backup: true
+  backup: false
 variables:
   username: nimit
 
@@ -12,12 +12,24 @@ packages:
     hooks:
       pre_deploy:
         - printf "package_name={{package_name}}\ndotfiles_dir={{dotfiles_dir}}\ntarget_dir={{target_dir}}\nusername={{username}}\n" > /tmp/dotman_vars.txt
+    doctor:
+      executables:
+        - name: nvim
+          severity: error
+        - name: lazygit
+          severity: warning
+        - name: lazydocker
+          severity: warning
   nvim-home:
     description: "Neovim configuration home use"
     depends: ["nvim-base"]
     files:
       - source: "nvim/home"
         target: "~/.config/nvim"
+    doctor:
+      executables:
+        - name: opencode
+          severity: error
 
   opencode:
     description: "OpenCode AI assistant configuration"
