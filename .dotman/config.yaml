@@ -62,3 +62,30 @@ packages:
         target: "~/.config/zsh/"
       - source: "zsh/starship.toml"
         target: "~/.config/starship.toml"
+    doctor:
+      executables:
+        # --- Required (hard errors) ---
+        - name: zsh
+          severity: error
+        - name: git
+          severity: error
+        - name: compinit
+          severity: error
+
+        # --- Shell ecosystem ---
+        - name: starship
+          severity: warning
+        - name: eza
+          severity: warning
+        - name: nvim
+          severity: warning
+
+        # --- Dev tooling ---
+        - name: cargo
+          severity: warning
+        - name: pipx
+          severity: warning
+        - name: bun
+          severity: warning
+        - name: uv
+          severity: warning
