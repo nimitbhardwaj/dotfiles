@@ -32,11 +32,6 @@
       "url": "https://mcp.grep.app",
       "enabled": true,
     },
-    "draw_io": {
-      "type": "local",
-      "command": ["npx", "-y", "@next-ai-drawio/mcp-server@latest"],
-      "enabled": false,
-    },
     "leetcode": {
       "type": "local",
       "command": ["npx", "-y", "@jinzcdev/leetcode-mcp-server"],
@@ -54,6 +49,11 @@
     "excel": {
       "type": "local",
       "command": ["uvx", "excel-mcp-server", "stdio"],
+      "enabled": false,
+    },
+    "alphavantage": {
+      "type": "local",
+      "command": ["uvx", "av-mcp", "{env:ALPHA_VANTAGE_API_KEY}"],
       "enabled": false,
     },
   },

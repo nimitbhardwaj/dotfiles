@@ -3,12 +3,16 @@
 # ==========================================================
 
 # ---------- Base ----------
-. "$HOME/.config/zsh/base.zsh"
-. "$HOME/.config/zsh/plugins.zsh"
-. "$HOME/.config/zsh/doctor.zsh"
+ZSH_CONFIG_DIR="$HOME/.config/zsh"
 
-# Load bun
-. "$HOME/.config/zsh/bun.zsh"
+if [[ -d "$ZSH_CONFIG_DIR" ]]; then
+  for file in "$ZSH_CONFIG_DIR"/*.zsh(.N); do
+    # Skip this main file if it's inside the same directory
+    [[ "$file" == "$ZSH_CONFIG_DIR/main.zsh" ]] && continue
+    source "$file"
+  done
+fi
+
 
 # Load Secrets
 [ -f "$HOME/.config/secrets.zsh" ] && source "$HOME/.config/secrets.zsh"
