@@ -6,13 +6,11 @@
 ZSH_CONFIG_DIR="$HOME/.config/zsh"
 
 if [[ -d "$ZSH_CONFIG_DIR" ]]; then
-  for file in "$ZSH_CONFIG_DIR"/*.zsh(.N); do
-    # Skip this main file if it's inside the same directory
+  for file in "$ZSH_CONFIG_DIR"/*.zsh; do
     [[ "$file" == "$ZSH_CONFIG_DIR/main.zsh" ]] && continue
-    source "$file"
+    source $file
   done
 fi
-
 
 # Load Secrets
 [ -f "$HOME/.config/secrets.zsh" ] && source "$HOME/.config/secrets.zsh"
