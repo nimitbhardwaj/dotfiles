@@ -56,7 +56,7 @@ packages:
     description: "Openclaw configs"
     files:
       - source: "zsh/extras/openclaw.zsh"
-        target: "~/.config/zsh/"
+        target: "~/.config/zsh/openclaw.zsh"
     doctor:
       executables:
         # --- Required (hard errors) ---
