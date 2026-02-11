@@ -52,7 +52,16 @@ packages:
     files:
       - source: "voxtype"
         target: "~/.config/voxtype/"
-
+  openclaw:
+    description: "Openclaw configs"
+    files:
+      - source: "zsh/extras/openclaw.zsh"
+        target: "~/.config/zsh/"
+    doctor:
+      executables:
+        # --- Required (hard errors) ---
+        - name: openclaw
+          severity: error
   zsh:
     description: "Zsh Config for the system"
     files:
@@ -69,9 +78,6 @@ packages:
           severity: error
         - name: git
           severity: error
-        - name: compinit
-          severity: error
-
         # --- Shell ecosystem ---
         - name: starship
           severity: warning
@@ -89,8 +95,3 @@ packages:
           severity: warning
         - name: uv
           severity: warning
-  openclaw:
-    description: "Openclaw configs"
-    files:
-      source: "zsh/extras/openclaw.zsh"
-      target: "~/.config/zsh/"
