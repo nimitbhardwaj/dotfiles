@@ -30,16 +30,6 @@ packages:
       executables:
         - name: opencode
           severity: warning
-  nvim-minimal:
-    description: "Minimal alternative config for nvim."
-    files:
-      - source: "nvim/minimal"
-        target: "~/.config/nvim"
-    doctor:
-      executables:
-        - name: nvim
-          severity: error
-
   opencode:
     description: "OpenCode AI assistant configuration"
     files:
