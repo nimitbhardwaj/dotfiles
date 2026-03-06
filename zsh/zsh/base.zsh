@@ -70,7 +70,7 @@ if command -v eza >/dev/null 2>&1; then
   alias ls='eza --icons --group-directories-first'
   alias ll='eza -l --icons --group-directories-first'
   alias la='eza -la --icons --group-directories-first'
-  alias l='eza -CF --icons --group-directories-first'
+  alias l='eza -F --icons --group-directories-first'
 
   alias lt='eza --tree --icons'
   alias lg='eza --git --icons'
