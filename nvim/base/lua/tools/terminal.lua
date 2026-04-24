@@ -1,6 +1,13 @@
 local M = {}
 
 M.terminals = {}
+M.next_id = 1000
+
+function M.get_count()
+  local id = M.next_id
+  M.next_id = M.next_id + 1
+  return id
+end
 
 function M.register(term)
   M.terminals[term.bufnr] = term
@@ -25,6 +32,17 @@ function M.toggle_current()
   else
     vim.cmd("ToggleTerm")
   end
+end
+
+function M.toggle_with_count(count)
+  if count == 0 then
+    if vim.bo.buftype == "terminal" then
+      M.toggle_current()
+      return
+    end
+    count = 1
+  end
+  vim.cmd("exe " .. count .. " . 'ToggleTerm name=Terminal" .. count .. "'")
 end
 
 return M

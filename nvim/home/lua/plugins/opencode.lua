@@ -12,6 +12,7 @@ return {
     local opencode_term = Terminal:new({
       cmd = "opencode --port",
       direction = "float",
+      count = require("tools.terminal").get_count(),
       hidden = true,
       float_opts = {
         border = "curved",

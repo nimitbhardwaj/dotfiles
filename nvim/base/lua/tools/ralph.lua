@@ -9,6 +9,7 @@ local last_args = nil
 local function create_terminal(args)
   return Terminal:new({
     cmd = "ralph-tui run " .. args,
+    count = terminal.get_count(),
     direction = "float",
     float_opts = {
       border = "rounded",

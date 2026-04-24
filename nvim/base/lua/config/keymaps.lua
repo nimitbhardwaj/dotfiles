@@ -7,6 +7,8 @@ local ralph = require("tools.ralph")
 
 vim.keymap.set("n", "<leader>tp", posting.toggle, { desc = "Posting TUI" })
 vim.keymap.set("n", "<leader>tr", ralph.toggle, { desc = "Ralph TUI" })
-vim.keymap.set({ "n", "t" }, "<C-/>", terminal.toggle_current, {
+vim.keymap.set({ "n", "t" }, "<C-/>", function()
+  terminal.toggle_with_count(vim.v.count)
+end, {
   desc = "Toggle terminal (smart)",
 })

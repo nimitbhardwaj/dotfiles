@@ -6,6 +6,7 @@ local terminal = require("tools.terminal")
 local posting = Terminal:new({
   cmd = "posting",
   direction = "float",
+  count = terminal.get_count(),
   float_opts = {
     border = "rounded",
   },
