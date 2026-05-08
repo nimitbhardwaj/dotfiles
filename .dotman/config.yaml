@@ -60,6 +60,11 @@ packages:
       executables:
         - name: $HOME/.openfang/bin/openfang
           severity: error
+  skills:
+    description: "Openclaw configs"
+    files:
+      - source: "skills/"
+        target: "~/.agents/"
   zsh:
     description: "Zsh Config for the system"
     files:
