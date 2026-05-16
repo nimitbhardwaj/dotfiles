@@ -1,0 +1,9 @@
+theme = "tokyo-night"
+
+eq_preset = "Pop"
+eq = [-1, 2, 4, 5, 4, 1, -1, -1, 1, 2]
+repeat = "All"
+
+visualizer = "Matrix"
+[ytmusic]
+enabled = false

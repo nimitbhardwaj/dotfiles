@@ -30,6 +30,20 @@ packages:
       executables:
         - name: opencode
           severity: warning
+  cliamp:
+    description: "CLI Radio"
+    files:
+      - source: "cliamp"
+        target: "~/.config/cliamp"
+        absorb_ignore:
+          - "cliamp.log"
+          - "cliamp.sock"
+          - "cliamp.sock.pid"
+          - "resume.json"
+    doctor:
+      executables:
+        - name: cliamp
+          severity: error
   opencode:
     description: "OpenCode AI assistant configuration"
     files:
