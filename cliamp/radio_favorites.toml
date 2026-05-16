@@ -3,3 +3,12 @@ name = "radiopunjabitoday"
 url = "http://stream.zeno.fm/019324w4ez4tv"
 country = "India"
 codec = "MP3"
+
+[[station]]
+name = "РАДИО ВАНЯ"
+url = "https://icecast-radiovanya.cdnvideo.ru/radiovanya"
+country = "The Russian Federation"
+bitrate = 64
+codec = "AAC+"
+tags = "pop"
+homepage = "http://www.radiovanya.ru/"
