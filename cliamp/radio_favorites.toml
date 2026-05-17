@@ -12,3 +12,10 @@ bitrate = 64
 codec = "AAC+"
 tags = "pop"
 homepage = "http://www.radiovanya.ru/"
+
+[[station]]
+name = "Bol Punjabi Radio"
+url = "https://bolpunjabi-ekamsoftware.radioca.st/stream"
+country = "India"
+bitrate = 128
+codec = "MP3"
