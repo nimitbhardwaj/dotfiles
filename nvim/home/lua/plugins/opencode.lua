@@ -53,7 +53,7 @@ return {
       require("opencode").select()
     end, { desc = "Execute opencode action…" })
     vim.keymap.set({ "n", "x" }, "<leader>o+", function()
-      require("opencode").prompt("@this")
+      require("opencode").prompt("@this ", { submit = false })
     end, { desc = "Add to opencode" })
     vim.keymap.set({ "n", "t" }, "<c-.>", function()
       require("opencode").toggle()
