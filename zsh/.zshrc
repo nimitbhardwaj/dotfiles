@@ -21,8 +21,6 @@ fi
 # Rust
 [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
-# opencode
-[[ -d "$HOME/.opencode/bin" ]] && export PATH="$HOME/.opencode/bin:$PATH"
 
 # Pipx
 [[ -d "$HOME/.local/bin" ]] && export PATH="$PATH:$HOME/.local/bin"
@@ -37,7 +35,3 @@ fpath+=~/.zfunc
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
-
-
-# opencode
-export PATH=$HOME/.opencode/bin:$PATH

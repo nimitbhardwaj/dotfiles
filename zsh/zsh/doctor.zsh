@@ -129,10 +129,10 @@ zsh_doctor() {
   print "🔧 DEVELOPMENT TOOLS"
   print "───────────────────────────────────────────────"
 
-  if command -v opencode >/dev/null 2>&1; then
-    print "✓ Opencode"
+  if command -v pi >/dev/null 2>&1; then
+    print "✓ Pi"
   else
-    print "⚠ Opencode not found"
+    print "⚠ Pi not found"
     ((warnings++))
   fi
 

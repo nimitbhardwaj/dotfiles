@@ -28,7 +28,7 @@ packages:
         target: "~/.config/nvim"
     doctor:
       executables:
-        - name: opencode
+        - name: pi
           severity: warning
   cliamp:
     description: "CLI Radio"
@@ -44,16 +44,18 @@ packages:
       executables:
         - name: cliamp
           severity: error
-  opencode:
-    description: "OpenCode AI assistant configuration"
+  pi:
+    description: "Pi agent assistant configuration"
     files:
-      - source: "opencode"
-        target: "~/.config/opencode"
+      - source: "pi"
+        target: "~/.pi"
         absorb_ignore:
-          - ".*node_modules.*"
-          - "antigravity-accounts.json"
-          - "package.json"
-          - "bun.lock"
+          - "agent/npm"
+          - "agent/sesions"
+    doctor:
+      executables:
+        - name: pi
+          severity: error
   hypr:
     description: "Hyprland configs"
     files:

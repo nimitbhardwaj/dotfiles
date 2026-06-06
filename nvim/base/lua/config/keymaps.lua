@@ -4,9 +4,12 @@
 local posting = require("tools.posting")
 local terminal = require("tools.terminal")
 local ralph = require("tools.ralph")
+local pi = require("tools.pi")
 
 vim.keymap.set("n", "<leader>tp", posting.toggle, { desc = "Posting TUI" })
 vim.keymap.set("n", "<leader>tr", ralph.toggle, { desc = "Ralph TUI" })
+vim.keymap.set({ "n", "t" }, "<C-.>", pi.toggle, { desc = "Pi agent (toggle)" })
+vim.keymap.set({ "n", "x" }, "<leader>o+", pi.send_reference, { desc = "Send file reference to Pi" })
 vim.keymap.set({ "n", "t" }, "<C-/>", function()
   terminal.toggle_with_count(vim.v.count)
 end, {
