@@ -50,8 +50,15 @@ packages:
       - source: "pi"
         target: "~/.pi"
         absorb_ignore:
+          - "agent/agents"
+          - "agent/compound-engineering"
+          - "agent/git"
           - "agent/npm"
-          - "agent/sesions"
+          - "agent/sessions"
+          - "agent/skills"
+          - "agent/auth.json"
+          - "agent/trust.json"
+
     doctor:
       executables:
         - name: pi

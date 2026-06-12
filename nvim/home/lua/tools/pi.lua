@@ -16,10 +16,29 @@ local pi = Terminal:new({
     border = "rounded",
   },
   hidden = true,
+  -- Don't force the view to the bottom on every line pi prints, so scrolling
+  -- up to read while it's working actually sticks.
+  auto_scroll = false,
   on_open = function(self)
     terminal.register(self)
     running = true
     vim.cmd("startinsert!")
+    -- pi is an inline CLI app, so while it streams, the terminal "follows" new
+    -- output as long as the cursor is on the last line — scrolling the view up
+    -- alone gets yanked back down. So on scroll-up, drop into terminal-normal
+    -- mode and park the cursor mid-window (M), which moves it off the last line
+    -- and stops the follow. Then scroll up normally.
+    local map_opts = { buffer = self.bufnr, nowait = true }
+    vim.keymap.set("t", "<ScrollWheelUp>", [[<C-\><C-n>M<ScrollWheelUp>]], map_opts)
+    -- Vertical scroll only: disable horizontal (left/right) scrolling.
+    for _, key in ipairs({ "<ScrollWheelLeft>", "<ScrollWheelRight>" }) do
+      vim.keymap.set({ "t", "n" }, key, "<Nop>", map_opts)
+    end
+    -- Clicking while typing should stay in terminal mode (don't drop to normal
+    -- mode). When scrolled up, a click just positions the cursor and keeps the
+    -- scrolled view — it never yanks you back down. Press i to resume typing.
+    vim.keymap.set("t", "<LeftMouse>", "<Nop>", map_opts)
+    vim.keymap.set("t", "<LeftRelease>", "<Nop>", map_opts)
   end,
   on_exit = function(self)
     terminal.unregister(self)
