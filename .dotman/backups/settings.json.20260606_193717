@@ -1,9 +1,0 @@
-{
-  "lastChangelogVersion": "0.78.1",
-  "defaultProvider": "minimax",
-  "defaultModel": "MiniMax-M2.7-highspeed",
-  "theme": "tokyo-night",
-  "packages": [
-    "npm:@ifi/oh-pi-themes"
-  ]
-}
