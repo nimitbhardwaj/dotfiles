@@ -25,6 +25,10 @@ fi
 # Pipx
 [[ -d "$HOME/.local/bin" ]] && export PATH="$PATH:$HOME/.local/bin"
 
+# Node
+
+[[ -d "$HOME/.local/share/mise/installs/node/25.2.1/bin" ]] && export PATH="$PATH:$HOME/.local/share/mise/installs/node/25.2.1/bin"
+
 # Dotfiles location
 export DOTMAN_CONFIG_DIR="$HOME/.dotfiles"
 

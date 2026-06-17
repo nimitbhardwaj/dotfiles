@@ -49,8 +49,8 @@
     "npm:pi-context",
     "npm:pi-rtk-optimizer"
   ],
-  "lastChangelogVersion": "0.79.4",
-  "theme": "tomorrow-night-burns",
+  "lastChangelogVersion": "0.79.6",
+  "theme": "dark",
   "defaultProvider": "minimax-m3-clean",
   "defaultModel": "MiniMax-M3"
 }
