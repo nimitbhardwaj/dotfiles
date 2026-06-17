@@ -50,7 +50,7 @@
     "npm:pi-rtk-optimizer"
   ],
   "lastChangelogVersion": "0.79.6",
-  "theme": "dark",
+  "theme": "tomorrow-night-burns",
   "defaultProvider": "minimax-m3-clean",
   "defaultModel": "MiniMax-M3"
 }
