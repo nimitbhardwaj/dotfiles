@@ -47,9 +47,10 @@
     "npm:@victor-software-house/pi-curated-themes",
     "npm:pi-terminal-theme",
     "npm:pi-context",
-    "npm:pi-rtk-optimizer"
+    "npm:pi-rtk-optimizer",
+    "git:github.com/DietrichGebert/ponytail"
   ],
-  "lastChangelogVersion": "0.79.6",
+  "lastChangelogVersion": "0.79.8",
   "theme": "tomorrow-night-burns",
   "defaultProvider": "minimax-m3-clean",
   "defaultModel": "MiniMax-M3"

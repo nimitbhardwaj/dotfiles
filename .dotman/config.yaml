@@ -88,6 +88,11 @@ packages:
     files:
       - source: "skills/"
         target: "~/.agents/"
+  kitty:
+    description: "Kitty configs"
+    files:
+      - source: "kitty/"
+        target: "~/.config/kitty"
   zsh:
     description: "Zsh Config for the system"
     files:
