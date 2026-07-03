@@ -48,9 +48,10 @@
     "npm:pi-terminal-theme",
     "npm:pi-context",
     "npm:pi-rtk-optimizer",
-    "git:github.com/DietrichGebert/ponytail"
+    "git:github.com/DietrichGebert/ponytail",
+    "npm:pi-intercom"
   ],
-  "lastChangelogVersion": "0.79.8",
+  "lastChangelogVersion": "0.80.3",
   "theme": "tomorrow-night-burns",
   "defaultProvider": "minimax-m3-clean",
   "defaultModel": "MiniMax-M3"

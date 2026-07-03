@@ -20,6 +20,8 @@ packages:
           severity: warning
         - name: lazydocker
           severity: warning
+        - name: lazysql
+          severity: warning
   nvim-home:
     description: "Neovim configuration home use"
     depends: ["nvim-base"]
@@ -50,6 +52,7 @@ packages:
       - source: "pi"
         target: "~/.pi"
         absorb_ignore:
+          - "agent/intercom"
           - "agent/agents"
           - "agent/compound-engineering"
           - "agent/git"
