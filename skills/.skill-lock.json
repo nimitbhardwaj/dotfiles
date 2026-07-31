@@ -54,6 +54,15 @@
       "skillFolderHash": "8773e8874e3eaa4d59e2cd871999d7d426fc2ec3",
       "installedAt": "2026-05-27T20:18:48.826Z",
       "updatedAt": "2026-05-27T20:18:48.826Z"
+    },
+    "mitmproxy-mcp": {
+      "source": "moha-abdi/mitmproxy-mcp",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/moha-abdi/mitmproxy-mcp.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "802a05ec695e38735408c6c95341525bae77103d",
+      "installedAt": "2026-07-24T18:45:02.878Z",
+      "updatedAt": "2026-07-24T18:45:02.878Z"
     }
   },
   "dismissed": {
