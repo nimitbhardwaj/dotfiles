@@ -39,3 +39,6 @@ fpath+=~/.zfunc
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
+
+# bun completions
+[ -s "/home/nimitbhardwaj/.bun/_bun" ] && source "/home/nimitbhardwaj/.bun/_bun"
