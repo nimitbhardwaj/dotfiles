@@ -42,9 +42,15 @@ bindkey -M vicmd '^[[F' end-of-line
 # ---------- Completion ----------
 fpath+=~/.zfunc
 autoload -Uz compinit
-compinit -d ~/.cache/zcompdump
+# Rebuild the completion dump at most once a day; use the cache otherwise
+if [[ -n ~/.cache/zcompdump(#qN.mh+24) ]]; then
+  compinit -d ~/.cache/zcompdump
+else
+  compinit -C -d ~/.cache/zcompdump
+fi
 
-zstyle ':completion:*' menu select
+# fzf-tab (plugins.zsh) replaces zsh's own menu selection on Tab
+zstyle ':completion:*' menu no
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -81,3 +87,8 @@ fi
 # ---------- General Aliases ----------
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
+
+# ---------- Fzf Setup ----------
+# ^R / ^T / M-c + completion. Re-sourced in plugins.zsh after zsh-vi-mode,
+# which resets the keymaps when it initialises.
+command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)

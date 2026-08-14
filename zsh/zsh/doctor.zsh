@@ -100,8 +100,24 @@ zsh_doctor() {
   if command -v eza >/dev/null 2>&1; then
     print "✓ Eza (ls replacement)"
   else
-    print "⚠ Eza not installed (ls aliases inactive)"
+    print "⚠ Eza not installed (ls aliases + fzf-tab dir previews inactive)"
     print "  → Install: brew install eza  OR  sudo apt install eza"
+    ((warnings++))
+  fi
+
+  if command -v fzf >/dev/null 2>&1; then
+    print "✓ fzf ($(fzf --version | cut -d' ' -f1)) — Tab completion, ^R, ^T, M-c"
+  else
+    print "✗ fzf not found (Tab completion falls back to plain zsh)"
+    print "  → Install: brew install fzf  OR  sudo apt install fzf"
+    ((errors++))
+  fi
+
+  if command -v bat >/dev/null 2>&1; then
+    print "✓ bat (fzf-tab file previews)"
+  else
+    print "⚠ bat not installed (fzf-tab previews fall back to head)"
+    print "  → Install: brew install bat"
     ((warnings++))
   fi
 
@@ -186,6 +202,7 @@ zsh_doctor() {
     "hlissner/zsh-autopair"
     "zsh-users/zsh-history-substring-search"
     "jeffreytse/zsh-vi-mode"
+    "Aloxaf/fzf-tab"
   )
 
   for p in "${plugins[@]}"; do
