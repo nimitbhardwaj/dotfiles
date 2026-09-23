@@ -45,7 +45,7 @@ local harnesses = {
   },
 }
 
-local DEFAULT_HARNESS = "omp"
+local DEFAULT_HARNESS = "claude"
 
 -- The choice is remembered per project directory, keyed by the cwd nvim was
 -- started in, in a small JSON map under nvim's state dir. Two nvim instances in
