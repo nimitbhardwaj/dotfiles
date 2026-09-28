@@ -50,3 +50,6 @@ export DOTMAN_CONFIG_DIR="$HOME/.dotfiles"
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
+
+# opencode
+export PATH=/Users/nimitbhardwaj/.opencode/bin:$PATH

@@ -1,6 +1,6 @@
 -- Floating-terminal wrapper around CLI coding agents ("harnesses").
 --
--- One harness is active at a time; `:SetAIHarness omp|claude` switches, and the
+-- One harness is active at a time; `:SetAIHarness opencode|claude` switches, and the
 -- choice is remembered per project directory across nvim restarts
 -- (`:SetAIHarness reset` forgets it). The keymaps (<C-.> to toggle, <leader>o+
 -- to send a file reference) always act on whichever harness is active. Each
@@ -15,34 +15,21 @@ local terminal = require("tools.terminal")
 --   path              -- absolute/relative file path
 --   srow, scol        -- selection start (1-based; nil outside visual mode)
 --   erow, ecol        -- selection end
+-- Claude Code's IDE integration and opencode's editor plugins both use
+-- @path#Lstart-end (no columns).
+local function hash_line_ref(path, srow, _, erow, _, _)
+  if not srow then
+    return "@" .. path
+  end
+  if srow == erow then
+    return string.format("@%s#L%d", path, srow)
+  end
+  return string.format("@%s#L%d-%d", path, srow, erow)
+end
+
 local harnesses = {
-  omp = {
-    cmd = "omp",
-    ref = function(path, srow, scol, erow, ecol, linewise)
-      if not srow then
-        return "@" .. path
-      end
-      -- Oh My Pi keeps pi's mention syntax: @path:Lstart-Lend, with columns
-      -- when the selection is characterwise.
-      if linewise then
-        return string.format("@%s:L%d-L%d", path, srow, erow)
-      end
-      return string.format("@%s:L%dC%d-L%dC%d", path, srow, scol, erow, ecol)
-    end,
-  },
-  claude = {
-    cmd = "claude",
-    ref = function(path, srow, _, erow, _, _)
-      if not srow then
-        return "@" .. path
-      end
-      -- Claude Code's own IDE integration uses @path#Lstart-end (no columns).
-      if srow == erow then
-        return string.format("@%s#L%d", path, srow)
-      end
-      return string.format("@%s#L%d-%d", path, srow, erow)
-    end,
-  },
+  opencode = { cmd = "opencode", ref = hash_line_ref },
+  claude = { cmd = "claude", ref = hash_line_ref },
 }
 
 local DEFAULT_HARNESS = "claude"
@@ -232,7 +219,7 @@ local function type_into_agent(session, text)
   return true
 end
 
--- Type the reference followed by a space. Claude closes its @-mention popup on
+-- Type the reference followed by a space. Claude and opencode close their @-mention popup on
 -- that trailing space, so nothing else is needed to dismiss it.
 local function deliver(session, ref)
   type_into_agent(session, ref .. " ")
@@ -303,7 +290,7 @@ vim.api.nvim_create_user_command("SetAIHarness", function(opts)
   M.set(opts.args)
 end, {
   nargs = "?",
-  desc = "Set the AI agent harness used by <C-.> for this directory (omp|claude|reset)",
+  desc = "Set the AI agent harness used by <C-.> for this directory (opencode|claude|reset)",
   complete = function(lead)
     local candidates = vim.tbl_keys(harnesses)
     table.insert(candidates, "reset")

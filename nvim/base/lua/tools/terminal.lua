@@ -9,7 +9,7 @@ function M.get_count()
   return id
 end
 
--- The TUIs we host in these floats (omp, posting, lazydocker) turn on
+-- The TUIs we host in these floats (opencode, claude, posting, lazydocker) turn on
 -- any-motion mouse tracking (DECSET 1003) for hover. nvim only asks the host
 -- terminal for bare motion when 'mousemoveevent' is on — without it you get
 -- clicks, wheel and drags but no hover. Keep it on only while a registered
@@ -31,11 +31,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufLeave" }, {
 -- <2-LeftDrag>/<2-LeftRelease>, and anything we leave unmapped falls through
 -- to nvim, which is exactly what drops us back into normal mode.
 -- The wheel is deliberately absent: left unmapped, nvim already does the right
--- thing in both of the TUI's modes. With tracking on (omp's fullscreen pickers)
+-- thing in both of the TUI's modes. With tracking on (fullscreen TUIs like opencode)
 -- it forwards the wheel to the app; with tracking off (the inline transcript)
 -- the scrollback *is* this terminal buffer, so nvim scrolls it — which it can
 -- only do outside terminal mode. Mapping the wheel to a forward instead left
--- inline scrolling dead, since omp drops wheel reports it never asked for.
+-- inline scrolling dead, since TUIs drop wheel reports they never asked for.
 local mouse_reports = {}
 for modifier, mod_code in pairs({ [""] = 0, ["S-"] = 4, ["M-"] = 8, ["C-"] = 16 }) do
   mouse_reports["<" .. modifier .. "MouseMove>"] = { 35 + mod_code, "M" }
@@ -51,12 +51,12 @@ for modifier, mod_code in pairs({ [""] = 0, ["S-"] = 4, ["M-"] = 8, ["C-"] = 16 
 end
 
 -- Own the mouse inside these floats. The TUIs we host only turn mouse tracking
--- on for their fullscreen overlays (omp's pickers, for one); in the normal
+-- on for their fullscreen overlays (claude's pickers, for one); in the normal
 -- inline view it is off, and nvim then handles the click itself — which is why
 -- every click and scroll used to kick you from terminal mode into normal mode.
 -- So consume the event and write the SGR report to the job ourselves: the TUI
 -- acts on it when it asked for tracking and ignores it when it did not (checked
--- against omp), and either way terminal mode survives. Read the scrollback with
+-- against claude and opencode), and either way terminal mode survives. Read the scrollback with
 -- <C-\><C-n> as before.
 local function own_mouse(term)
   for key, report in pairs(mouse_reports) do
