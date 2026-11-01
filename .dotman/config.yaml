@@ -47,15 +47,6 @@ packages:
     files:
       - source: "voxtype"
         target: "~/.config/voxtype/"
-  openfang:
-    description: "Openclaw configs"
-    files:
-      - source: "zsh/extras/openfang.zsh"
-        target: "~/.config/zsh/openclaw.zsh"
-    doctor:
-      executables:
-        - name: $HOME/.openfang/bin/openfang
-          severity: error
   skills:
     description: "Openclaw configs"
     files:
