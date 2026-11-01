@@ -90,3 +90,16 @@ packages:
           severity: warning
         - name: uv
           severity: warning
+  claude:
+    description: "Claude Code settings (plugins, marketplaces) and skills"
+    files:
+      - source: "claude/settings.json"
+        target: "~/.claude/settings.json"
+      - source: "skills/skills/find-skills"
+        target: "~/.claude/skills/find-skills"
+      - source: "skills/skills/gh-cli"
+        target: "~/.claude/skills/gh-cli"
+    doctor:
+      executables:
+        - name: claude
+          severity: error
