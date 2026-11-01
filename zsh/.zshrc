@@ -39,9 +39,6 @@ export DOTMAN_CONFIG_DIR="$HOME/.dotfiles"
 # opencode
 export PATH="$HOME/.opencode/bin:$PATH"
 
-# Lacy Shell
-export PATH="$HOME/.lacy/bin:$PATH"
-
 # Pipx
 [[ -d "$HOME/.local/bin" ]] && export PATH="$PATH:$HOME/.local/bin"
 
@@ -56,9 +53,3 @@ fi
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
-
-# ---------- Lacy Shell Plugin ----------
-# Keep last: sets up prompt and keybindings
-# NO_COLOR is unexported so it only affects Lacy, not other tools
-NO_COLOR=1
-[[ -r "$HOME/.lacy/lacy.plugin.zsh" ]] && source "$HOME/.lacy/lacy.plugin.zsh"
