@@ -59,4 +59,6 @@ fi
 
 # ---------- Lacy Shell Plugin ----------
 # Keep last: sets up prompt and keybindings
+# NO_COLOR is unexported so it only affects Lacy, not other tools
+NO_COLOR=1
 [[ -r "$HOME/.lacy/lacy.plugin.zsh" ]] && source "$HOME/.lacy/lacy.plugin.zsh"
